@@ -14,7 +14,7 @@ install:
   - rustup-init.exe -y
   - set PATH=C:\Users\appveyor\.cargo\bin;%PATH%
   - rustup install %NIGHTLY_RUST_VERSION%
-  - for /f "delims=" %a in ('rustup run %NIGHTLY_RUST_VERSION% rustc --print sysroot') do @set NIGHTLY_RUST_SYSROOT=%a
+  - cmd: for /f "delims=" %a in ('rustup run %NIGHTLY_RUST_VERSION% rustc --print sysroot') do @set NIGHTLY_RUST_SYSROOT=%a
   - set PATH=%NIGHTLY_RUST_SYSROOT%/lib/rustlib/x86_64-pc-windows-msvc/lib/;%PATH%
   - cargo +%NIGHTLY_RUST_VERSION% install rustfmt-nightly --force
 
